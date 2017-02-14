@@ -1,5 +1,4 @@
 # Explorer Mode
-
 1. How many users are there? **50**
 ```sql
 SELECT count(*) FROM users;
@@ -35,6 +34,20 @@ SELECT SUM(quantity) FROM orders;
 ```sql
 SELECT SUM(items.price*orders.quantity) FROM items INNER JOIN orders ON items.id == item_id WHERE category LIKE "%book%";
 ```
-9. Simulate buying an item by inserting a User for yourself and an Order for that User. **No. Okay, fine.**
+9. Simulate buying an item by inserting a User for yourself and an Order for that User. **No. ... Okay. Fine.**
+```sql
+INSERT INTO users (first_name, last_name, email) VALUES ("PaTrICk", "sTar","PATRICKSTAR@mrspuffsboatingschool.com");
+```
+```sql
+INSERT INTO orders (user_id, item_id, quantity, created_at) VALUES ((SELECT id FROM users WHERE email == "PATRICKSTAR@mrspuffsboatingschool.com"), (SELECT id FROM items WHERE title == "Intelligent Rubber Chair"), 1, CURRENT_TIMESTAMP);
+```
+# Adventure Mode
+1. What item was ordered most often? Grossed the most money? ****
+```sql
+```
+2. What user spent the most? ****
+```sql
+```
+3. What were the top 3 highest grossing categories? ****
 ```sql
 ```
