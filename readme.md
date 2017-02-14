@@ -13,9 +13,10 @@ SELECT title FROM items ORDER BY price DESC LIMIT 5;
 SELECT title FROM items WHERE category LIKE "%Book%" ORDER BY price ASC LIMIT 1;
 ```
 4. Who lives at "6439 Zetta Hills, Willmouth, WY"? Do they have another address? **Corrine Little; and, yes: 54369 Wolff Forges, Lake Bryon, CA 31587.**
-```sql
+* ```sql
 SELECT last_name, first_name FROM addresses INNER JOIN users ON user_id == users.id WHERE street == "6439 Zetta Hills" AND city == "Willmouth" AND state == "WY";
-
+```
+* ```sql
 SELECT last_name,first_name,street,city,state,zip FROM addresses INNER JOIN users ON user_id == users.id WHERE users.id == (SELECT user_id FROM addresses INNER JOIN users ON user_id == users.id WHERE street == "6439 Zetta Hills" AND city == "Willmouth" AND state == "WY");
 ```
 5. Correct Virginie Mitchell's address to "New York, NY, 10108".
@@ -30,11 +31,10 @@ SELECT SUM(price) FROM items WHERE category LIKE "%tool%";
 ```sql
 SELECT SUM(quantity) FROM orders;
 ```
-8. How much was spent on books? **1081352**
+8. How much was spent on books? **1,081,352 krabby patties**
 ```sql
 SELECT SUM(items.price*orders.quantity) FROM items INNER JOIN orders ON items.id == item_id WHERE category LIKE "%book%";
 ```
-9. Simulate buying an item by inserting a User for yourself and an Order for that User.
+9. Simulate buying an item by inserting a User for yourself and an Order for that User. **No. Okay, fine.**
 ```sql
-
 ```
