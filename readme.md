@@ -20,16 +20,21 @@ SELECT last_name,first_name,street,city,state,zip FROM addresses INNER JOIN user
 ```
 5. Correct Virginie Mitchell's address to "New York, NY, 10108".
 ```sql
+UPDATE addresses SET city = "New York", zip = 10108 WHERE addresses.id == (SELECT addresses.id FROM addresses INNER JOIN users ON user_id == users.id WHERE last_name == "Mitchell" AND first_name == "Virginie" AND state == "NY");
 ```
-6. How much would it cost to buy one of each tool?
+6. How much would it cost to buy one of each tool? **46,477 krabby patties (or whatever monetary unit we're using)**
 ```sql
+SELECT SUM(price) FROM items WHERE category LIKE "%tool%";
 ```
-7. How many total items did we sell?
+7. How many total items did we sell? **2,125 items**
 ```sql
+SELECT SUM(quantity) FROM orders;
 ```
-8. How much was spent on books?
+8. How much was spent on books? **1081352**
 ```sql
+SELECT SUM(items.price*orders.quantity) FROM items INNER JOIN orders ON items.id == item_id WHERE category LIKE "%book%";
 ```
 9. Simulate buying an item by inserting a User for yourself and an Order for that User.
 ```sql
+
 ```
