@@ -42,8 +42,12 @@ INSERT INTO users (first_name, last_name, email) VALUES ("PaTrICk", "sTar","PATR
 INSERT INTO orders (user_id, item_id, quantity, created_at) VALUES ((SELECT id FROM users WHERE email == "PATRICKSTAR@mrspuffsboatingschool.com"), (SELECT id FROM items WHERE title == "Intelligent Rubber Chair"), 1, CURRENT_TIMESTAMP);
 ```
 # Adventure Mode
-1. What item was ordered most often? Grossed the most money? ****
+1. What item was ordered most often? Grossed the most money? **Incredible Granite Car; and, the same.**
 ```sql
+SELECT title FROM items WHERE id == (SELECT item_id FROM orders GROUP BY item_id ORDER BY quantity DESC, count(*) DESC LIMIT 1);
+```
+```sql
+SELECT title FROM orders INNER JOIN items ON item_id == items.id GROUP BY item_id ORDER BY SUM(price*quantity) DESC limit 1;
 ```
 2. What user spent the most? ****
 ```sql
