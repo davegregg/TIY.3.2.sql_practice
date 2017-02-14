@@ -13,10 +13,10 @@ SELECT title FROM items ORDER BY price DESC LIMIT 5;
 SELECT title FROM items WHERE category LIKE "%Book%" ORDER BY price ASC LIMIT 1;
 ```
 4. Who lives at "6439 Zetta Hills, Willmouth, WY"? Do they have another address? **Corrine Little; and, yes: 54369 Wolff Forges, Lake Bryon, CA 31587.**
-* ```sql
+```sql
 SELECT last_name, first_name FROM addresses INNER JOIN users ON user_id == users.id WHERE street == "6439 Zetta Hills" AND city == "Willmouth" AND state == "WY";
 ```
-* ```sql
+```sql
 SELECT last_name,first_name,street,city,state,zip FROM addresses INNER JOIN users ON user_id == users.id WHERE users.id == (SELECT user_id FROM addresses INNER JOIN users ON user_id == users.id WHERE street == "6439 Zetta Hills" AND city == "Willmouth" AND state == "WY");
 ```
 5. Correct Virginie Mitchell's address to "New York, NY, 10108".
